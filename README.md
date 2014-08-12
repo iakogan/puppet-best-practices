@@ -3,19 +3,23 @@ puppet-best-practices
 
 ## Follow  comunity Best Practices
 Please use following best practices while developing Puppet scripts and deploying application.
+
 1. Follow puppetlab stylegude
 http://docs.puppetlabs.com/guides/style_guide.html
+
 2. Follow puppet best practices
 http://docs.puppetlabs.com/guides/best_practices.html
 
 
 ##  Autoformat
-Use auto-format functionality to align your code to standards (CTRL+F in geppetto). 
-Find VIM plugin. 
+Use auto-format functionality to align your code to standards (CTRL+F in Geppetto). 
+
+If you use VIM, Install VIM plugin. 
+
 Make it a part of your workflow. Do not try to remember all style gudelines. 
 
 ##  Use one line per resource:
-
+Example: BAD vs GOOD 
 ```puppet
   # BAD
   # not sure which one will fail
@@ -42,6 +46,7 @@ https://docs.puppetlabs.com/guides/module_guides/bgtm.html
 - ssh_keys.pp 
 - servcie.pp 
 - iptables.pp 
+TODO: More info here
 
 ## Use arrows
 
@@ -49,7 +54,7 @@ https://docs.puppetlabs.com/guides/module_guides/bgtm.html
 
 ~> (notification arrow)
 
-see more:  https://docs.puppetlabs.com/puppet/3/reference/lang_relationships.html#chaining-arrows
+See more:  https://docs.puppetlabs.com/puppet/3/reference/lang_relationships.html#chaining-arrows
 
 
 ## Use anchor before and after: 
@@ -63,7 +68,6 @@ class my () {
   anchor { "my::end": }
 }
 ```
-#
 
 Why? You will be grateful to yourself when you will orchestrate your puppet deployment.  
 https://docs.puppetlabs.com/guides/module_guides/bgtm.html#containment-and-anchoring
@@ -86,19 +90,24 @@ Do not leave it empty string.
   validate_string($config_file_mode)
 ```
 
-
-## Use http://puppet-lint.com/
+## Use puppet-lint
+http://puppet-lint.com/
 Prefreably automaticaly. 
 
 ## Do NOT do Hiera lookups in your component modules unless it is hiera_hash _with_ merge
+TODO: merge vars pattern goes here. 
+
+FYI: Next version of hiera will merge parameters even without hiera_hash finction. 
 
 ## Use The params class pattern
 TODO: Class patern goes here
+
 
 ## Use stdlib, it is cool! Do not re-invent!
 For example use *file_line* from stdlib when possible not augias
 https://forge.puppetlabs.com/puppetlabs/stdlib
 TODO: other usefull functions from stdlib
+
 
 ## Document your module. It is easy. 
 Use puppet-labs documentation template: 
@@ -114,7 +123,6 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code
   parser = future
 ```
   
-  
 ```puppet
   # now you can loop trough array or hash
   $trusted_networks.each |$network| {
@@ -125,19 +133,19 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code
     }
   }
 ```
-https://docs.puppetlabs.com/puppet/latest/reference/experiments_future.html
+
+See more: https://docs.puppetlabs.com/puppet/latest/reference/experiments_future.html
 
 
 
-## In verery template or file add a header: 
+## In evry template or file add a header: 
 
      # This file is managed by <%= @name %> puppet module! 
      <!- This file is managed by <%= @name %> puppet module!-> 
 
-## Do NOT use exported resources unless you have PuppetDB. 
+## Do NOT use exported resources unless you have PuppetDB! 
 
 
 # More reading: 
-
 http://puppetlabs.com/blog/best-practices-building-puppet-modules
 http://projects.puppetlabs.com/projects/1/wiki/Puppet_Best_Practice2
