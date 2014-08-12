@@ -15,7 +15,6 @@ Find VIM plugin.
 Make it a part of your workflow. Do not try to remember all style gudelines. 
 
 ##  Use one line per resource:
-If one resource fails, you will be able to identify it.
 
 ```puppet
   # BAD
@@ -31,6 +30,8 @@ If one resource fails, you will be able to identify it.
   package { "strace": ensure => "installed" }
   package { "sudo":   ensure => "installed" }
 ```
+Why? If one resource fails, you will be able to identify it.
+
 
 ## Module Composition is important
 https://docs.puppetlabs.com/guides/module_guides/bgtm.html
