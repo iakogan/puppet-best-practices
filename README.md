@@ -1,11 +1,46 @@
 puppet-best-practices
 =====================
 
+## Follow  comunity Best Practices
+Please use following best practices while developing Puppet scripts and deploying application.
+1. Follow puppetlab stylegude
+http://docs.puppetlabs.com/guides/style_guide.html
+2. Follow puppet best practices
+http://docs.puppetlabs.com/guides/best_practices.html
 
+
+##  Autoformat
+Use auto-format functionality to align your code to standards (CTRL+F in geppetto). 
+Find VIM plugin. 
+Make it a part of your workflow. Do not try to remember all style gudelines. 
+
+##  Use one line per resource:
+If one resource fails, you will be able to identify it.
+
+```puppet
+  # BAD
+  # not sure which one will fail
+  package { ["screen", "strace", "sudo"]: 
+      ensure => "installed"
+  }
+```
+
+```puppet
+  # GOOD:
+  package { "screen": ensure => "installed" }
+  package { "strace": ensure => "installed" }
+  package { "sudo":   ensure => "installed" }
+```
 
 ## Module Composition is important
 https://docs.puppetlabs.com/guides/module_guides/bgtm.html
-
+- init.pp  
+- install.pp 
+- config.pp 
+- setup.pp 
+- ssh_keys.pp 
+- servcie.pp 
+- iptables.pp 
 
 ## Use arrows
 
